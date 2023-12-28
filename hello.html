@@ -9,36 +9,35 @@
 
 <h1>Calculator Page</h1>
  <body>
-    <main>
-     <form>
-        <input id="outputbox" type="button" readonly>
-    </form>
-    <form id="form" name="Calculator">
-        <input class="dd" type="button" value="1">
-        <input class="dd" type="button" value="2">
-        <input class="dd" type ="button" value="3">
-        <input class="operator" type="button" value="+">
+    <section>
+        <input id="display" type="text" placeholder="0" >
+        <div id="form" name="Calculator">
+        <button class="digits" onclick="appendToDisplay('1')">1 </button>
+        <button class="digits" onclick="appendToDisplay('2')">2 </button>
+        <button class="digits" onclick="appendToDisplay('3')">3 </button>
+        <button class="operator" onclick="appendToDisplay('+')">+</button>
         <br>
-        <input class="dd" type="button" value="4">
-        <input class="dd" type="button" value="5">
-        <input class="dd" type="button" value="6">
-        <input class="operator" type="button" value="-">
+        <button class="digits" onclick="appendToDisplay('4')">4 </button>
+        <button class="digits" onclick="appendToDisplay('5')">5 </button>
+        <button class="digits" onclick="appendToDisplay('6')">6</button>
+        <button class="operator" onclick="appendToDisplay('-')">-</button>
         <br>
-        <input class="dd" type="button" value="7">
-        <input class="dd" type="button" value="8">
-        <input class="dd" type="button" value="9">
-        <input class="operator" type="button" value="x">
+        <button class="digits" onclick="appendToDisplay('7')">7 </button>
+        <button class="digits" onclick="appendToDisplay('8')">8 </button>
+        <button class="digits" onclick="appendToDisplay('9')">9 </button>
+        <button class="operator" onclick="appendToDisplay('*')">x</button>
         <br>
-        <input class="dd" type="button" value="0">
-        <button class="btn">AC</button>
-        <input class="dd" id="eq" type="button" value="=">
-        <input class="operator" type="button" value="/">
-    </form>
-</main>
+        <button class="digits" onclick="appendToDisplay('0')">0</button>
+        <button class="btn" onclick="clearDisplay()">AC</button>
+        <button class="digits" id="eq" value="=" onclick="calculate()">=</button>
+        <button class="operator" type="button" value="/" onclick="appendToDisplay('/')">/</button>
+        </div>
+    </section>
 
 <footer id="ft">
 <p>contact: abc@gmail.com</p>
 <p>@2024 pk</p>
 </footer>
+<script src="index.js"></script>
 </body>
 </html>
