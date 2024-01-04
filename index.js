@@ -60,18 +60,13 @@ document.addEventListener('DOMContentLoaded', function () {
         for (const i of infixTokens) {
             if (!isNaN(i) || i.includes('.')) {
                 postfixTokens.push(i);
-                console.log(typeof(infixTokens));
-                console.log("pf"+postfixTokens);
             } 
             else {
                 while (stack.length && precedence[stack[stack.length - 1]] >= precedence[i]) {
                     postfixTokens.push(stack.pop());
-                    console.log("hi")
                 }
-                console.log("stack" + stack);
-                console.log("pf completed"+postfixTokens);
-                var a=stack.push(i);
-                console.log("i value is" + a)
+
+                stack.push(i);
             }
         }
 
@@ -82,38 +77,38 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function evaluatePostfix(postfixTokens) {
-        const stack = [];
+        const temp = [];
 
         for (const token of postfixTokens) {
             if (!isNaN(token) || token.includes('.')) {
                 stack.push(parseFloat(token));
             } else {
-                const operand2 = stack.pop();
-                const operand1 = stack.pop();
+                const num2 = temp.pop();
+                const num1= temp.pop();
 
                 switch (token) {
                     case '+':
-                        stack.push(operand1 + operand2);
+                        temp.push(num11 + num2);
                         break;
                     case '-':
-                        stack.push(operand1 - operand2);
+                        temp.push(num1 - num2);
                         break;
                     case '*':
-                        stack.push(operand1 * operand2);
+                        temp.push(num1 * num2);
                         break;
                     case '/':
-                        if (operand2 === 0) {
+                        if (num2 === 0) {
                             throw new Error('Division by zero');
                         }
-                        stack.push(operand1 / operand2);
+                        temp.push(num1 / num2);
                         break;
                 }
             }
         }
 
-        if (stack.length !== 1) {
+        if (temp.length !== 1) {
             throw new Error('Invalid expression');
         }
-        return stack.pop();
+        return temp.pop();
     }
 });
